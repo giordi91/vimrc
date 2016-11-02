@@ -1,5 +1,7 @@
 "set guifont=consolas
 "set guifont=Lucida_Console:h10
+"set shell=C:\\Users\\mgiordano\\Documents\\PortableGit\\bin\bash
+set shell=C:\Windows\System32\cmd
 set guifont=Consolas:h11
 colorscheme jellybeans
 set number
@@ -12,14 +14,17 @@ syntax on
 
 "pymode configuration
 "prevent crazy folding
-
-set foldlevelstart=10
-let g:pymode_rope=0
-let g:pymode_lint=0
+"set foldlevelstart=10
+"let g:pymode_rope=0
+"let g:pymode_lint=0
 " set smarttab
 noremap <F8> :new<CR>:read !svn diff<CR>:set syntax=diff buftype=nofile<CR>gg
 
-
+setlocal foldmethod=indent
+setlocal foldignore=
+nnoremap <space> za
+vnoremap <space> zf
+set foldnestmax=1
 "ctags configs
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
@@ -35,6 +40,7 @@ endif
 set guioptions-=T
 "remove search highlight
 noremap <C-F11> :nohlsearch<CR>
+
 "swap header cpp
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
@@ -77,6 +83,7 @@ Plugin 'vim-scripts/pep8'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'vim-scripts/cmake.vim-syntax'
 "Plugin 'klen/python-mode'
+"Plugin 'vim-scripts/grep.vim'
 
 " pretty statusline
 set encoding=utf-8
@@ -90,3 +97,5 @@ endif
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+set noshellslash
